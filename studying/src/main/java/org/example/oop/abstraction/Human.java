@@ -1,4 +1,4 @@
-package org.example.oop.abstraction.edu.hillel.oop.intro.subpack;
+package org.example.oop.abstraction;
 
 public class Human {
     String Name;
