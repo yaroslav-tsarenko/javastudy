@@ -1,4 +1,4 @@
-package org.example.generics.types;
+package org.example.generics.types.VariablesOfMethodT;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +9,9 @@ public class Main {
 //
 //        ptD.x = 20.5;
 //        ptD.y = 34.5;
+
         /*Тільки цілі значення*/
+
         System.out.println(pt.x + " " + pt.y);
         System.out.println(ptD.x + " " + ptD.y);
         System.out.println(pt.getCordX() + " " + pt.getCordY());
