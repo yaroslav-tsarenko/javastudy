@@ -1,25 +1,10 @@
 package org.example.exersices.Slack.ExerciseInterface;
 
-public class Player {
-    public void play(){
-        System.out.println("Playing...");
+public interface Player<T> {
+    void play();
 
-    }
+    void stop();
 
-    public void stop(){
-        System.out.println("Stopped");
-
-    }
+    void loadFile(T file);
 }
 
-class MP3Player extends Player {
-
-}
-
-class MP4Player extends Player{
-
-}
-
-class VideoPlayer extends Player{
-
-}
