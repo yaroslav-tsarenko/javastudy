@@ -1,0 +1,3 @@
+# SOLID
+# KISS
+# YAGNI
