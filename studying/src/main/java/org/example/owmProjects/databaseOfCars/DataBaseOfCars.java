@@ -22,6 +22,7 @@ public class DataBaseOfCars {
                     System.out.println(cars[i]);
                 }
             }
+
             System.out.println("If you want to continue, type 'yes'. " +
                     "If you want to exit, type 'no': ");
             userChoice = scanner.next();
