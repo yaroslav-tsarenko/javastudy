@@ -36,7 +36,7 @@ public class SimpleAnimation {
         public void paintComponent(Graphics g){
             g.setColor(Color.white);
             g.fillRect(0, 0, this.getWidth(), getHeight());
-            
+
             g.setColor(Color.green);
             g.fillOval(x, y, 40, 40);
         }
