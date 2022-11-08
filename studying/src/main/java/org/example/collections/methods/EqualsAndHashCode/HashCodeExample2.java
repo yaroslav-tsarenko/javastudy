@@ -19,7 +19,7 @@ public class HashCodeExample2 {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Car car = (Car) o;
-            return number != null ? number.equals(car.number) : car.number == null;
+            return Objects.equals(number, car.number);
         }
 
         @Override
