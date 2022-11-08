@@ -1,9 +1,8 @@
-package org.example.exersices.LearningJava.BeatBox;
+package org.example.exersices.LearningJava.BeatBox.introduction;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.*;
 
 public class SimpleGui3C implements ActionListener {
     JFrame frame;
