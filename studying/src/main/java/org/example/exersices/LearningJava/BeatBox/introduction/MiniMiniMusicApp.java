@@ -1,4 +1,4 @@
-package org.example.exersices.LearningJava.BeatBox;
+package org.example.exersices.LearningJava.BeatBox.introduction;
 
 import javax.sound.midi.*;
 

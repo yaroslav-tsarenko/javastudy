@@ -1,8 +1,7 @@
-package org.example.exersices.LearningJava.BeatBox;
+package org.example.exersices.LearningJava.BeatBox.introduction;
 
 
 import javax.sound.midi.*;
-import java.net.spi.URLStreamHandlerProvider;
 
 public class MiniMusicCmdLine {
     public static void main(String[] args) {
