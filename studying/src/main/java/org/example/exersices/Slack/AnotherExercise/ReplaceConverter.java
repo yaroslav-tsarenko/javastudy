@@ -1,4 +1,4 @@
-package org.example.exersices;
+package org.example.exersices.Slack.AnotherExercise;
 
 import java.util.Scanner;
 
