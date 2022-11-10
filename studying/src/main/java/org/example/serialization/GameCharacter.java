@@ -1,6 +1,7 @@
 package org.example.serialization;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class GameCharacter implements Serializable {
     int power;
@@ -28,5 +29,14 @@ public class GameCharacter implements Serializable {
             weaponList += weapons[i] + " ";
         }
         return weapons;
+    }
+
+    @Override
+    public String toString() {
+        return "GameCharacter{" +
+                "power=" + power +
+                ", type='" + type + '\'' +
+                ", weapons=" + Arrays.toString(weapons) +
+                '}';
     }
 }
