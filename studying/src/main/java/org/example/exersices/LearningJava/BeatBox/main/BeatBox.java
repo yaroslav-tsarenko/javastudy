@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.sound.midi.*;
 import java.awt.event.*;
+import java.io.*;
 import java.util.*;
 
 public class BeatBox {
@@ -156,6 +157,49 @@ public class BeatBox {
             sequencer.setTempoFactor((float)(tempoFactor * .97));
         }
     }
+    public class MySendListener implements ActionListener{
+        public void actionPerformed(ActionEvent a){
+            boolean[] checkBoxState = new boolean[256];
+            for (int i = 0; i < 256; i++) {
+                JCheckBox check = (JCheckBox) checkBoxList.get(i);
+                if(check.isSelected()){
+                    checkBoxState[i] = true;
+                }
+            }
+            try{
+                FileOutputStream fileStream = new FileOutputStream(new File("Checkbox.ser"));
+                ObjectOutputStream os = new ObjectOutputStream(fileStream);
+                os.writeObject(checkBoxState);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public class MyReadInListener implements ActionListener{
+        public void actionPerformed(ActionEvent a){
+            boolean[] checkBoxState = null;
+            try{
+                FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
+                ObjectInputStream is = new ObjectInputStream(fileIn);
+                checkBoxState = (boolean[]) is.readObject();
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+
+            for (int i = 0; i < 256; i++) {
+                JCheckBox check = (JCheckBox) checkBoxList.get(i);
+                if(checkBoxState[i]){
+                    check.setSelected(true);
+                }else {
+                    check.setSelected(false);
+                }
+                sequencer.stop();
+                buildTrackAndStart();
+            }
+        }
+    }
+
     public void makeTracks(int[] list){
         for (int i = 0; i < 16; i++) {
             int key = list[i];
