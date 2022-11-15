@@ -2,12 +2,15 @@ package org.example.sockets;
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class SimpleChatClientA {
+    JTextArea incoming;
     JTextField outgoing;
+    BufferedReader reader;
     PrintWriter writer;
     Socket sock;
 
@@ -29,7 +32,7 @@ public class SimpleChatClientA {
         try {
             sock = new Socket("127.0.0.1", 5000);
             writer = new PrintWriter(sock.getOutputStream());
-            System.out.println("networking estabilished");
+            System.out.println("networking established");
 
         } catch (IOException ex) {
             ex.printStackTrace();
