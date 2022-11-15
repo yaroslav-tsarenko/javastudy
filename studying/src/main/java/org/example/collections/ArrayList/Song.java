@@ -1,10 +1,15 @@
 package org.example.collections.ArrayList;
 
-public class Song {
+import java.util.Comparator;
+
+abstract class Song implements Comparator<Song> {
     String title;
     String artist;
     String rating;
     String bpm;
+    public int compareTo(Song s){
+        return title.compareTo(s.getTitle());
+    }
 
     Song(String t, String a, String r, String b){
       title = t;
