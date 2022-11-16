@@ -1,8 +1,7 @@
-package org.example.collections.HasMap;
+package org.example.collections.HashMap;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 public class HashMapExample {
     public static void main(String[] args) {
