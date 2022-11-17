@@ -86,12 +86,14 @@ public class QuizCardBuilder {
             saveFile(fileSave.getSelectedFile());
         }
     }
+
     public class NewMenuListener implements ActionListener {
         public void actionPerformed (ActionEvent ev){
             cardList.clear();
             clearCard();
         }
     }
+
     private void clearCard(){
         question.setText(" ");
         answer.setText(" ");

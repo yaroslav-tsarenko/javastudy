@@ -46,48 +46,51 @@ public class DataBaseOfCars {
         Scanner addNewCar = new Scanner(System.in);
         System.out.println("Do you want add new car?: ");
         String scannerNewCar = addNewCar.next();
+        String userChoiceAddCar = "yes";
 
-        if (scannerNewCar.equals("yes")) {
+        while (userChoiceAddCar.equals("yes")) {
+            if (scannerNewCar.equals("yes")) {
 
-            ArrayList<String> newCar = new ArrayList<>();
+                ArrayList<String> newCar = new ArrayList<>();
 
-            System.out.println("Write car model which you want to add: ");
-            String NameOfCar = addNewCar.next();
-            newCar.add(NameOfCar);
-
-
-            System.out.println("Enter engine capacity of your car: ");
-            String EngineCapacity = addNewCar.next();
-            newCar.add(EngineCapacity);
+                System.out.println("Write car model which you want to add: ");
+                String NameOfCar = addNewCar.next();
+                newCar.add(NameOfCar);
 
 
-            System.out.println("Enter color of your car: ");
-            String Color = addNewCar.next();
-            newCar.add(Color);
+                System.out.println("Enter engine capacity of your car: ");
+                String EngineCapacity = addNewCar.next();
+                newCar.add(EngineCapacity);
 
 
-            System.out.println("Enter price of your car: ");
-            String Price = addNewCar.next();
-            newCar.add(Price);
+                System.out.println("Enter color of your car: ");
+                String Color = addNewCar.next();
+                newCar.add(Color);
 
 
-            System.out.println("Enter model of car: ");
-            String Model = addNewCar.next();
-            newCar.add(Model);
-
-            System.out.println("Name: " + NameOfCar + " Engine Capacity: " + EngineCapacity + " Color: " + Color + " Price: " + Price + " Model: " + NameOfCar + " " + Model);
+                System.out.println("Enter price of your car: ");
+                String Price = addNewCar.next();
+                newCar.add(Price);
 
 
+                System.out.println("Enter model of car: ");
+                String Model = addNewCar.next();
+                newCar.add(Model);
+
+                System.out.println("Name: " + NameOfCar + " Engine Capacity: " + EngineCapacity + " Color: " + Color + " Price: " + Price + " Model: " + NameOfCar + " " + Model);
+
+            }
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("If you want add new car, type 'yes'. " +
+                    "If you want to exit, type 'no': ");
+            userChoiceAddCar = scanner.next();
         }
-    }
-
-    public void UserAddCar(){
 
     }
 }
 
 
-class AddNewCar extends InformationAboutCars{
+class AddNewCar extends InformationAboutCars {
 
     public AddNewCar(String engineCapacity, String color, String price, String model) {
         super(engineCapacity, color, price, model);
