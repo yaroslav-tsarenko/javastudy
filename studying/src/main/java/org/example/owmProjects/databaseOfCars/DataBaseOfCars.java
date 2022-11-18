@@ -1,37 +1,39 @@
 package org.example.owmProjects.databaseOfCars;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import org.example.owmProjects.databaseOfCars.model.Car;
+import org.example.owmProjects.databaseOfCars.service.CarPrinterService;
+import org.example.owmProjects.databaseOfCars.service.CarStorageService;
+
+import javax.naming.Name;
+import java.util.*;
 
 public class DataBaseOfCars {
     public static void main(String[] args) {
 
         String userChoice = "yes";
+        CarStorageService storageService = new CarStorageService();
+        CarPrinterService printer = new CarPrinterService();
 
 
         while (userChoice.equals("yes")) {
+
             try {
+
+                printer.print(storageService.getCars());
                 Scanner scanner = new Scanner(System.in);
+
 
                 System.out.println("Chose the index of car like a '0, 1, 2, 3, 4': ");
 
                 int indexOfCar = scanner.nextInt();
 
-                InformationAboutCars[] cars = new InformationAboutCars[10];
 
-                cars[0] = new BMW("1.5", "Black", "10.000$", "BMW 328i");
-                cars[1] = new MercedesBenz("2.5", "White", "15.000$", "Mercedes-Benz CLA");
-                cars[2] = new Mitsubishi("3.0", "Yellow", "5.000$", "Mitsubishi Evolution");
-                cars[3] = new Toyota("5.0", "Red", "50.000$", "Toyota Land Cruiser");
-                cars[4] = new Volkswagen("4.0", "Grey", "27.000$", "Volkswagen Tiguan");
-
-
-                for (int i = 0; i < cars.length; i++) {
+                for (int i = 0; i < storageService.getCars().length; i++) {
                     if (indexOfCar == i) {
-                        System.out.println(cars[i]);
+                        printer.print(storageService.getCars()[i], i);
                     }
                 }
+
                 System.out.println("If you want to continue, type 'yes'. " +
                         "If you want to exit, type 'no': ");
                 userChoice = scanner.next();
@@ -39,8 +41,6 @@ public class DataBaseOfCars {
             } catch (InputMismatchException ex) {
                 System.err.println("Entered wrong symbol");
             }
-
-
         }
 
         Scanner addNewCar = new Scanner(System.in);
@@ -49,51 +49,62 @@ public class DataBaseOfCars {
         String userChoiceAddCar = "yes";
 
         while (userChoiceAddCar.equals("yes")) {
+
             if (scannerNewCar.equals("yes")) {
 
-                ArrayList<String> newCar = new ArrayList<>();
+                Car car = new Car();
 
-                System.out.println("Write car model which you want to add: ");
+                System.out.println("Write car brand which you want to add: ");
                 String NameOfCar = addNewCar.next();
-                newCar.add(NameOfCar);
+                car.setBrand(NameOfCar);
 
 
                 System.out.println("Enter engine capacity of your car: ");
                 String EngineCapacity = addNewCar.next();
-                newCar.add(EngineCapacity);
+                car.setEngineCapacity(EngineCapacity);
 
 
                 System.out.println("Enter color of your car: ");
                 String Color = addNewCar.next();
-                newCar.add(Color);
+                car.setColor(Color);
 
 
                 System.out.println("Enter price of your car: ");
                 String Price = addNewCar.next();
-                newCar.add(Price);
-
+                car.setPrice(Price);
 
                 System.out.println("Enter model of car: ");
                 String Model = addNewCar.next();
-                newCar.add(Model);
+                car.setModel(Model);
 
-                System.out.println("Name: " + NameOfCar + " Engine Capacity: " + EngineCapacity + " Color: " + Color + " Price: " + Price + " Model: " + NameOfCar + " " + Model);
+                storageService.addNewCar(car);
 
             }
+
+            printer.print(storageService.getCars());
             Scanner scanner = new Scanner(System.in);
+            String deleteChoice = "yes";
+            while (deleteChoice.equals("yes")) {
+                System.out.println("If you want remove new car, type 'yes'. " +
+                        "If you want to exit, type 'no': ");
+
+                deleteChoice = scanner.next();
+                if (deleteChoice.equals("yes")) {
+                    System.out.println("Type index of car what you want to remove: ");
+                    int removeCar = scanner.nextInt();
+                    storageService.removeCar(removeCar);
+                    printer.print(storageService.getCars());
+                }
+            }
+
             System.out.println("If you want add new car, type 'yes'. " +
                     "If you want to exit, type 'no': ");
             userChoiceAddCar = scanner.next();
+
         }
 
     }
 }
 
 
-class AddNewCar extends InformationAboutCars {
 
-    public AddNewCar(String engineCapacity, String color, String price, String model) {
-        super(engineCapacity, color, price, model);
-    }
-
-}

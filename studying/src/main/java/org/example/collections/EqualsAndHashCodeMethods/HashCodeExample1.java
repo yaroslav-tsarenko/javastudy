@@ -1,4 +1,4 @@
-package org.example.collections.methods.EqualsAndHashCode;
+package org.example.collections.EqualsAndHashCodeMethods;
 
 import java.util.HashMap;
 import java.util.Map;
