@@ -6,7 +6,7 @@ import java.io.IOException;
 public class InputStream {
     public static void main(String[] args) {
         try{
-            
+
             FileInputStream fin = new FileInputStream("D:/javaRush/file.txt");
 
             System.out.printf("File size: %d bytes \n", fin.available());
