@@ -1,4 +1,4 @@
-package org.example.exersices.LearningJava.JavaBeansConstructor;
+package org.example.exersices.LearningJava.JavaBeansTemplate;
 
 public class MainNutritionFacts {
     public static void main(String[] args) {

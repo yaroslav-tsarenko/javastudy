@@ -1,4 +1,4 @@
-package org.example.exersices.LearningJava.JavaBeansConstructor;
+package org.example.exersices.LearningJava.JavaBeansTemplate;
 
 public class NutritionFacts {
     private int servingSize = -1;
