@@ -12,6 +12,7 @@ public class FileCopy {
 
         Path sourceDirectory = Paths.get("C:/Users/IdeaProjects/testFolder/test.txt");
         Path targetDirectory = Paths.get("C:/Users/IdeaProjects/testFolder/test3.txt");
+
         try {
             Files.copy(sourceDirectory, targetDirectory);
         } catch (IOException e) {
