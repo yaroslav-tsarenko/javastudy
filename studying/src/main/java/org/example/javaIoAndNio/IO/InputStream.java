@@ -1,4 +1,4 @@
-package org.example.ionio;
+package org.example.javaIoAndNio.IO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
