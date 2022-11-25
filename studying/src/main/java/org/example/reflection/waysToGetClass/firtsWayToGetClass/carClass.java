@@ -1,4 +1,4 @@
-package org.example.reflection.firtsWayToGetClass;
+package org.example.reflection.waysToGetClass.firtsWayToGetClass;
 
 public class carClass {
     public static void main(String[] args) {

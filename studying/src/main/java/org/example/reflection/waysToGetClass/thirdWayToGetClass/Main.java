@@ -1,4 +1,4 @@
-package org.example.reflection.thirdWayToGetClass;
+package org.example.reflection.waysToGetClass.thirdWayToGetClass;
 
 public class Main {
     public static void main(String[] args) {
