@@ -1,0 +1,1 @@
+# На відміну від методу getDeclaredFields(), метод getFields() повертає лише public змінні

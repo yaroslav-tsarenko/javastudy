@@ -1,0 +1,1 @@
+# Метод getDeclaredMethod(String name, Class<?>... parameterTypes) приймає ім'я та var-args з типами параметрів методу. Якщо такого методу в класі немає, ми отримаємо checked NoSuchMethodException.
