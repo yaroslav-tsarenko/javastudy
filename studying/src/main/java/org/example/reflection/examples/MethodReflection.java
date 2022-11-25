@@ -1,4 +1,4 @@
-package org.example.reflection;
+package org.example.reflection.examples;
 
 import java.lang.reflect.*;
 

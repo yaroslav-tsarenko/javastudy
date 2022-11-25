@@ -1,7 +1,6 @@
-package org.example.reflection;
+package org.example.reflection.examples;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 public class MyClass {
