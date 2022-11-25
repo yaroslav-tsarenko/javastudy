@@ -1,4 +1,4 @@
-package org.example.reflection.thirdWayToGetClass;
+package org.example.reflection.waysToGetClass.thirdWayToGetClass;
 
 class Car {
     private int horsepower;
