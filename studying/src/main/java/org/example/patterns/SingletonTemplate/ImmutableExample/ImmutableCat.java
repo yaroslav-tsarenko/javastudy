@@ -1,4 +1,4 @@
-package org.example.patterns.SingletonTemplate;
+package org.example.patterns.SingletonTemplate.ImmutableExample;
 
 public final class ImmutableCat {
 
