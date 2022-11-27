@@ -1,4 +1,6 @@
-package org.example.patterns.SingletonTemplate;
+package org.example.patterns.SingletonTemplate.ImmutableExample;
+
+import org.example.patterns.SingletonTemplate.ImmutableExample.ImmutableCat;
 
 public class TestImmutable {
     public static void main(String[] args) {
