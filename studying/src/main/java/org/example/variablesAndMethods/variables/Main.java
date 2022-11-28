@@ -1,4 +1,4 @@
-package org.example.numbersWithWavingDot;
+package org.example.variablesAndMethods.variables;
 
 public class Main {
         public static void main(String[] args) {
