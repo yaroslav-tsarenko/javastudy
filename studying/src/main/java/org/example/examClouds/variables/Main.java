@@ -1,4 +1,4 @@
-package org.example.variablesAndMethods.variables;
+package org.example.examClouds.variables;
 
 public class Main {
         public static void main(String[] args) {
@@ -12,4 +12,11 @@ public class Main {
             System.out.println(b == c);
             System.out.println(g * 0);
         }
+}
+
+class Test{
+    public static void main(String[] args) {
+        double d1 = 67.876; //коми ставити не можна тільки точку
+        System.out.print(d1);
+    }
 }
