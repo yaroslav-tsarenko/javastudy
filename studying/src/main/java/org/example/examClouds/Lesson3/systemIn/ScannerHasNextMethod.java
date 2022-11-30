@@ -1,4 +1,4 @@
-package org.example.examClouds.systemIn;
+package org.example.examClouds.Lesson3.systemIn;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -48,5 +48,16 @@ class ScannerNextLineMethod{
         s1 = scanner.nextLine();
         s2 = scanner1.nextLine();
         System.out.println(s1 + s2);
+    }
+}
+
+class Test{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextDouble()) {
+            double i1 = sc.nextDouble();
+            double i2 = sc.nextDouble();
+            System.out.println(i1 + i2);
+        }
     }
 }

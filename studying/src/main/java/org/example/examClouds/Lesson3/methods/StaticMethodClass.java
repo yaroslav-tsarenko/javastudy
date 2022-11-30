@@ -1,4 +1,4 @@
-package org.example.examClouds.methods;
+package org.example.examClouds.Lesson3.methods;
 
 public class StaticMethodClass {
     static int staticVar = 3;
