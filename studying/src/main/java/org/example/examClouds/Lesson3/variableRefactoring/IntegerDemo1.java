@@ -1,4 +1,4 @@
-package org.example.examClouds.variableRefactoring;
+package org.example.examClouds.Lesson3.variableRefactoring;
 
 public class IntegerDemo1 {
     public static void main(String[] args) {

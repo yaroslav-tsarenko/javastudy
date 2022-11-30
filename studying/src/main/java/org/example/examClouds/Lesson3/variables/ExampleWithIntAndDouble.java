@@ -1,4 +1,4 @@
-package org.example.examClouds.variables;
+package org.example.examClouds.Lesson3.variables;
 
 public class ExampleWithIntAndDouble {
     public static void main(String[] args) {

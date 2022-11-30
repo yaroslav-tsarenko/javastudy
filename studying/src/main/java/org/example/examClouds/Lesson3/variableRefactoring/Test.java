@@ -1,4 +1,4 @@
-package org.example.examClouds.variableRefactoring;
+package org.example.examClouds.Lesson3.variableRefactoring;
 
 public class Test {
     public static void main(String[] vars) {
