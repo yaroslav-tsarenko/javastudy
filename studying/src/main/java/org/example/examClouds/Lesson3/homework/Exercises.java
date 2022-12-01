@@ -55,5 +55,5 @@ class CalculatorAdvanced{
     static int sum(int firstVariable, int secondVariable){
         return (firstVariable + secondVariable);
     }
-    
+
 }
