@@ -1,5 +1,10 @@
 package org.example.examClouds.Lesson5.OperatorIf;
 
+import org.example.exceptions.throwableExceptions.ScannerException;
+import org.example.sockets.SimpleChatClientA;
+
+import java.util.Scanner;
+
 public class IfBoolean {
     private static boolean booleanExpression;
 
@@ -10,7 +15,7 @@ public class IfBoolean {
     }
 }
 
-class IfElseWithSeasons{
+class IfElseWithSeasons {
     public static void main(String[] args) {
         int month = 8; // April
         String season;
@@ -26,5 +31,43 @@ class IfElseWithSeasons{
             season = "Not a Month";
         }
         System.out.println("April is in the " + season + ".");
+    }
+}
+
+
+class IfCheckNumberWithParseToInt {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number: ");
+        String userInput = scanner.nextLine();
+        int number = Integer.parseInt(userInput);
+
+        if (number % 2 == 0) {
+            System.out.println("Number is even ");
+        } else {
+            System.out.println("Number is not even");
+        }
+    }
+}
+
+class IfFromNumberToNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            compareNumber(number);
+        } else {
+            System.out.println("Inputted value is incorrect");
+        }
+    }
+
+    public static void compareNumber(int number) {
+        if (number > 0 && number < 10) {
+            System.out.println("Number is less");
+        } else {
+            System.out.println("Number is greater or negative");
+        }
     }
 }
