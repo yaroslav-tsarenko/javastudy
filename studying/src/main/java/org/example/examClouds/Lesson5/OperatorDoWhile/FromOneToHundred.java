@@ -4,6 +4,7 @@ public class FromOneToHundred {
         public static void main(String[] args) {
             int n = 1;
             do {
+
                 System.out.println("Tick " + n++);
             } while (n <= 100);
         }
