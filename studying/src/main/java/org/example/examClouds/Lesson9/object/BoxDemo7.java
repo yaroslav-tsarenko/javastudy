@@ -1,4 +1,4 @@
-package org.example.examClouds.Lesson9.OOP.object;
+package org.example.examClouds.Lesson9.object;
 
 public class BoxDemo7 {
     public static void main(String[] args) {
