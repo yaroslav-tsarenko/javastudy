@@ -1,4 +1,4 @@
-package org.example.examClouds.Lesson9.OOP.object;
+package org.example.examClouds.Lesson9.object;
 
 public class Box {
     double width;
