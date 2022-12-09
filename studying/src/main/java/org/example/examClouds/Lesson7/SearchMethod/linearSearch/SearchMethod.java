@@ -11,12 +11,12 @@ public class SearchMethod {
         int[] arrayNumbers = new int[20];
 
         for (int i = 0; i < arrayNumbers.length; i++) {
-            i = scanner.nextInt();
-            System.out.print(i + " ");
+            arrayNumbers[i] = scanner.nextInt();
         }
 
         System.out.println("Enter number to search: ");
         int searchNumber = scanner.nextInt();
+        //linearSearch(arrayNumbers[i], searchNumber);
 
     }
 
