@@ -8,7 +8,7 @@ public class SearchMethod {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter array: ");
-        int[] arrayNumbers = new int[20];
+        int[] arrayNumbers = new int[5];
 
         for (int i = 0; i < arrayNumbers.length; i++) {
             arrayNumbers[i] = scanner.nextInt();
@@ -16,7 +16,7 @@ public class SearchMethod {
 
         System.out.println("Enter number to search: ");
         int searchNumber = scanner.nextInt();
-        //linearSearch(arrayNumbers[i], searchNumber);
+        linearSearch(arrayNumbers, searchNumber);
 
     }
 
