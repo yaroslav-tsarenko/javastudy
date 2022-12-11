@@ -4,10 +4,11 @@ public class ColorBox extends Box6{
     String color;
 
     public ColorBox(int width, int depth, int height, String color){
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
-        this.color = color;
+        /**
+         * Вызов метода super() должен быть всегда в первом операторе, выполняемом в теле конструктора подкласса.
+         */
+       super(width, depth, height);
+       this.color = color;
     }
 
     public ColorBox() {
