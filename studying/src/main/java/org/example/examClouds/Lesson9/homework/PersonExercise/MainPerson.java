@@ -1,4 +1,4 @@
-package org.example.examClouds.Lesson9.homework;
+package org.example.examClouds.Lesson9.homework.PersonExercise;
 
 public class MainPerson {
     public static void main(String[] args) {

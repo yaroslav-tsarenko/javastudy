@@ -1,4 +1,4 @@
-package org.example.examClouds.Lesson9.homework;
+package org.example.examClouds.Lesson9.homework.PhoneExercise;
 
 public class Phone {
     private int number;
