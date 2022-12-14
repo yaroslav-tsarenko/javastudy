@@ -4,19 +4,23 @@ public class Phone {
     private int number;
     private String model;
     private int weight;
+    static int count;
 
     public Phone(int number, String model, int weight) {
      this(number, model);
+        count++;
     }
 
     public Phone(int number, String model) {
         this.number = number;
         this.model = model;
+        count++;
+
     }
 
 
     public Phone(){
-
+        count++;
     }
 
     public void receiveCall(String name, String number){
