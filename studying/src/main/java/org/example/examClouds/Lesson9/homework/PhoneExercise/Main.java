@@ -39,5 +39,6 @@ public class Main {
          phone3.receiveCall("Karina ", "48845854845 ");
 
          message.sendMessage(45665656, 344545454, 54545454);
+        System.out.println("Amount of created phones: " + Phone.count);
     }
 }
