@@ -1,6 +1,7 @@
 package org.example.examClouds.Lesson9.inheritance;
 
 public class Box6 {
+    public String weight;
     double width;
     double height;
     double depth;
