@@ -3,8 +3,8 @@ package org.example.enumerations;
 public class Test {
 
     public static void main(String[] args) {
-    //    Animal animal = Animal.CAT;
-      //  System.out.println(animal.toString());
+        //    Animal animal = Animal.CAT;
+        //  System.out.println(animal.toString());
 
         Season season = Season.WINTER;
         System.out.println(season.getTemperature());
@@ -23,9 +23,10 @@ public class Test {
 
         Season season = Season.SUMMER;
 
-        *//* Object -> Enum -> Season(Our created Enum)*//*
+        */
+        //Object -> Enum -> Season(Our created Enum)*//*
         System.out.println(season instanceof Season);
-        switch(season){
+        switch (season) {
             case SUMMER:
                 System.out.println("It's hot outside");
                 break;
@@ -39,7 +40,6 @@ public class Test {
                 System.out.println("It's rainy outside");
                 break;
         }
-    }*/
-
     }
 }
+

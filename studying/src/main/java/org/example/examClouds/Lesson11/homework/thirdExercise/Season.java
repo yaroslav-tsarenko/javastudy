@@ -1,7 +1,7 @@
-package org.example.enumerations;
+package org.example.examClouds.Lesson11.homework.thirdExercise;
 
 public enum Season {
-    SUMMER(35), WINTER(-15), AUTUMN(10), SPRING(20);
+    WINTER(-20), SPRING(15), SUMMER(25), AUTUMN(10);
 
     private int temperature;
 
@@ -9,7 +9,7 @@ public enum Season {
         this.temperature = temperature;
     }
 
-    public int getTemperature(){
+    public int getTemperature() {
         return temperature;
     }
 
