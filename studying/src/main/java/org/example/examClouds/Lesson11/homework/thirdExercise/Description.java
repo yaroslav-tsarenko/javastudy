@@ -4,6 +4,6 @@ public interface Description {
     void getDescription(org.example.enumerations.Season season);
 
     void getDescription(Season season);
-    
+
 
 }
