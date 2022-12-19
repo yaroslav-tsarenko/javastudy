@@ -24,7 +24,7 @@ class ParseToDouble{
 class ParseFromDouble{
     public static void main(String[] args) {
         Object[] object = new Object[6];
-        Double objectDouble = new Double("4.1");
+        Double objectDouble = new Double("4,1");
         object[0] = Float.parseFloat(String.valueOf(objectDouble));
         object[1] = Integer.parseInt(String.valueOf(objectDouble));
         object[2] = Boolean.parseBoolean(String.valueOf(objectDouble));
