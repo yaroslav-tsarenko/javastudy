@@ -7,5 +7,7 @@ public class ModifyStringDemo {
         System.out.println("Hello".toLowerCase());
         System.out.println("Hello".toUpperCase());
         System.out.println("    Hello World ".trim());
+
+
     }
 }
