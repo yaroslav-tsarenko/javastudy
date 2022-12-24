@@ -11,10 +11,8 @@ public class ResourceBundle {
         }
 
         private static void printInfo(String language, String country) throws UnsupportedEncodingException {
-
             Locale current = new Locale(language, country);
             java.util.ResourceBundle rb = java.util.ResourceBundle.getBundle("topic", current);
-
             String s1 = rb.getString("string1");
             String stringFormat1 = new String(s1.getBytes("ISO-8859-1"),"UTF-8");
             System.out.println(s1);
