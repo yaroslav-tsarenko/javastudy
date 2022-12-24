@@ -19,7 +19,7 @@ public class MinMax {
 
     public void minNum(){
         int min = array[0];
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             min = Math.min(min, array[i]);
         }
         System.out.println(min);
@@ -27,7 +27,7 @@ public class MinMax {
 
     public void maxNum() {
         int max = array[0];
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             max = Math.max(max, array[i]);
         }
         System.out.println(max);
