@@ -63,4 +63,12 @@ public class Car {
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
+
+    public Object getType() {
+        return null;
+    }
+
+    public boolean getCost() {
+        return false;
+    }
 }
