@@ -10,7 +10,7 @@ public class PredicateDemo {
         Predicate<String> predicate3 = predicate1.and(predicate2);
 
         System.out.println(predicate3.test(null));
-        System.out.println(predicate3.test("error"));
+        System.out.println(predicate3.test(""));
         System.out.println(predicate3.test("someString"));
     }
 }
