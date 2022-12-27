@@ -1,4 +1,4 @@
-package org.example.examClouds.Lesson17.homework;
+package org.example.examClouds.Lesson17.predicate;
 
 import java.util.function.Predicate;
 
