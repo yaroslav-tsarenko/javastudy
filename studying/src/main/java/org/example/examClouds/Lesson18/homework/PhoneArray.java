@@ -7,6 +7,7 @@ import java.util.List;
 
 public class PhoneArray {
     public static void main(String[] args) {
+
         List<Phone> phones = new ArrayList<>();
 
         phones.add(new Phone("067111", "IPhone", 45));
@@ -18,5 +19,11 @@ public class PhoneArray {
         for (Phone phone: phones){
             System.out.println(phone.getNumber());
         }
+
+        phones.forEach(p -> System.out.println(p.getModel()));
+
+
+
     }
+
 }
