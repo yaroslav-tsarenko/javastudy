@@ -1,5 +1,7 @@
 package org.example.examClouds.Lesson9.homework.PhoneExercise;
 
+import java.util.Objects;
+
 public class Phone {
     private int number;
     private String model;
@@ -58,5 +60,23 @@ public class Phone {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Phone phone)) return false;
+
+        if (number != phone.number) return false;
+        if (weight != phone.weight) return false;
+        return Objects.equals(model, phone.model);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = number;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + weight;
+        return result;
     }
 }
