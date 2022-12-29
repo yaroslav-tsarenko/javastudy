@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 public class LinkedHashSet<T> {
     public static void main(String[] args) {
+
         Set<String> set = new java.util.LinkedHashSet<>();
 
         set.add("Beta");
