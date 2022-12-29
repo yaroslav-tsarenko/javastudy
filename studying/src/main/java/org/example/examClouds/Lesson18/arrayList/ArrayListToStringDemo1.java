@@ -9,6 +9,8 @@ public class ArrayListToStringDemo1 {
         //1 вариант
         String[] stringArray1 = new String[arrayList.size()];
         arrayList.toArray(stringArray1);
+
+
         System.out.println(Arrays.toString(stringArray1));
 
         //2 вариант
