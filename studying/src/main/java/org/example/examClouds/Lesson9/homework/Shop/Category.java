@@ -12,7 +12,7 @@ public class Category extends Product {
 
 
     public Category(String name, int price, int rating, int[] products) {
-        super(name, price, rating);
+        super(name, price, String.valueOf(rating));
 
         this.products = products;
     }

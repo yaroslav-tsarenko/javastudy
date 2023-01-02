@@ -1,5 +1,7 @@
 package org.example.examClouds.Lesson9.homework.Shop;
 
+import java.util.Arrays;
+
 public class Product {
     private String name;
     private int price;
@@ -40,7 +42,7 @@ public class Product {
         this.rating = rating;
     }
 
-    public Product(String name, int price, int rating) {
+    public Product(String name, int price, String rating) {
         super();
     }
 
@@ -61,6 +63,14 @@ public class Product {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
+                ", products=" + Arrays.toString(products) +
+                '}';
+    }
+
+    public void setCost(int i) {
     }
 }

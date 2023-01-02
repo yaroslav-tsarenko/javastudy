@@ -14,6 +14,8 @@ public class IteratorDemo {
         arrayList.add("D");
         arrayList.add("F");
 
+        System.out.println(arrayList);
+
         Iterator<String> iterator = arrayList.iterator();
         while (iterator.hasNext()) {
             String element = iterator.next();
