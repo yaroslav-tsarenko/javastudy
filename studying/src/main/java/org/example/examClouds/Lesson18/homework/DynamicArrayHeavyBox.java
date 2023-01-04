@@ -3,9 +3,7 @@ package org.example.examClouds.Lesson18.homework;
 import org.example.examClouds.Lesson9.inheritance.HeavyBox;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 public class DynamicArrayHeavyBox {
     public static void main(String[] args) {
