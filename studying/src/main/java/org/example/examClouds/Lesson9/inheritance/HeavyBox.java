@@ -11,11 +11,15 @@ public class HeavyBox implements Comparable{
     public HeavyBox() {
     }
 
-    public HeavyBox(int width, int height, int depth, int weight) {
-        this.width = width;
+    public HeavyBox(int weight, int height, int depth, int width) {
+        this.weight = weight;
         this.height = height;
         this.depth = depth;
-        this.weight = weight;
+        this.width = width;
+    }
+
+    public int getWeight(){
+        return weight;
     }
 
     @Override
@@ -33,7 +37,7 @@ public class HeavyBox implements Comparable{
         return 0;
     }
 
-    double getCapacity() {
+    public double getCapacity() {
         return width * weight * height * depth;
     }
 }
