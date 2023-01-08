@@ -6,8 +6,7 @@ import java.io.IOException;
 
 public class CloseResource {
     public static String readFirstLineFromFile(String path) throws IOException {
-        try (BufferedReader br =
-                     new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             return br.readLine();
         }
     }
