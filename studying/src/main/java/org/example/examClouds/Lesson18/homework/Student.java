@@ -5,11 +5,6 @@ import java.util.List;
 
 public class Student {
 
-    public static void main(String[] args) {
-        List<Student> students = new ArrayList<>();
-
-    }
-
     private String name;
     private int group;
     private int course;
