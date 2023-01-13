@@ -11,7 +11,6 @@ public class SerializeCat {
     private static final String FILE_NAME = "testSer.txt";
 
     public static void main(String[] args) {
-        serialize();
         Cat cat = deserialize();
     }
 
@@ -26,7 +25,7 @@ public class SerializeCat {
         return cat;
     }
 
-    private static void serialize() {
+/*    private static void serialize() {
         Cat cat = new Cat("Барсик");
         try (FileOutputStream fs = new FileOutputStream(FILE_NAME);
              ObjectOutputStream os = new ObjectOutputStream(fs)) {
@@ -34,5 +33,5 @@ public class SerializeCat {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 }
