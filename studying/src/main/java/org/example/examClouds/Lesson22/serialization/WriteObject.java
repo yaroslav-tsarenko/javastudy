@@ -12,15 +12,8 @@ public class WriteObject {
         Person[] persons = {new Person(2, "Mike"), new Person(3, "Tom")};
 
 
-        try {
-
-            FileOutputStream fos = new FileOutputStream("people.bin");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("people.bin"))) {
             oos.writeObject(persons);
-
-            oos.close();
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
