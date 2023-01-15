@@ -1,4 +1,6 @@
 package org.example.examClouds.Lesson16.homework;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
 }
