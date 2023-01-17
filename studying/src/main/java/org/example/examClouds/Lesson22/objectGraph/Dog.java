@@ -17,10 +17,9 @@ public class Dog implements Serializable {
     @Override
     public boolean equals(Object o) {
 
-        if (this == o) return true;
-        if (!(o instanceof Dog dog)) return false;
+      //  if (this == o) return true;if (!(o instanceof Dog dog)) return false;
 
-        return Objects.equals(theCollar, dog.theCollar);
+        return false;
     }
 
     @Override
