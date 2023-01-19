@@ -37,15 +37,7 @@ public class Person {
         this.retired = retired;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Person person)) return false;
 
-        if (age != person.age) return false;
-        if (retired != person.retired) return false;
-        return Objects.equals(fullName, person.fullName);
-    }
 
     @Override
     public int hashCode() {
