@@ -62,15 +62,7 @@ public class Phone {
         this.weight = weight;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Phone phone)) return false;
 
-        if (number != phone.number) return false;
-        if (weight != phone.weight) return false;
-        return Objects.equals(model, phone.model);
-    }
 
     @Override
     public int hashCode() {

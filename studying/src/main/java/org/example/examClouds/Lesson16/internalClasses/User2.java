@@ -40,14 +40,6 @@ public class User2 {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User2 user2)) return false;
-
-        if (!Objects.equals(login, user2.login)) return false;
-        return Objects.equals(password, user2.password);
-    }
 
     @Override
     public int hashCode() {

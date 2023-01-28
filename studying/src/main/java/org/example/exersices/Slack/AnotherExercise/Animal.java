@@ -22,12 +22,6 @@ public class Animal {
                 "Tail: " + AnimalsTail;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Animal animal)) return false;
-        return AgeOfAnimal == animal.AgeOfAnimal && AnimalsTail == animal.AnimalsTail && Objects.equals(NameOfAnimal, animal.NameOfAnimal);
-    }
 
     @Override
     public int hashCode() {

@@ -1,7 +1,5 @@
 package org.example.examClouds.Lesson9.inheritance;
 
-import org.jetbrains.annotations.NotNull;
-
 public class HeavyBox implements Comparable{
     int weight;
     int height;
@@ -32,12 +30,13 @@ public class HeavyBox implements Comparable{
                 '}';
     }
 
-    @Override
-    public int compareTo(@NotNull Object o) {
-        return 0;
-    }
 
     public double getCapacity() {
         return width * weight * height * depth;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
