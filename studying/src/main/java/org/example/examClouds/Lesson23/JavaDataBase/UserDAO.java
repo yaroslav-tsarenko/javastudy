@@ -1,6 +1,10 @@
 package org.example.examClouds.Lesson23.JavaDataBase;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +16,13 @@ public class UserDAO extends AbstractDAO<Integer, User> {
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
-        DriverManager ConnectorDB = null;
         try (Connection connection = ConnectorDB.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(SQL_SELECT_ALL_USERS);
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
-                boolean add = users.add(new User(id, name));
+                users.add(new User(id, name));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -30,7 +33,6 @@ public class UserDAO extends AbstractDAO<Integer, User> {
     @Override
     public User findEntityById(Integer id) {
         User user = null;
-        DriverManager ConnectorDB;
         try (Connection connection = ConnectorDB.getConnection();
              PreparedStatement statement =
                      connection.prepareStatement(SQL_SELECT_USER_ID)) {

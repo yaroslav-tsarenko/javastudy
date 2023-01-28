@@ -21,12 +21,7 @@ public class Device {
                 ", serialNumber= " + SerialNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Device device)) return false;
-        return Float.compare(device.Price, Price) == 0 && Objects.equals(Manufacturer, device.Manufacturer) && Objects.equals(SerialNumber, device.SerialNumber);
-    }
+
 
     @Override
     public int hashCode() {
@@ -60,12 +55,6 @@ class Monitor {
                 ", ResolutionY = " + ResolutionY;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Monitor monitor)) return false;
-        return Float.compare(monitor.Price, Price) == 0 && ResolutionX == monitor.ResolutionX && ResolutionY == monitor.ResolutionY && Objects.equals(Manufacturer, monitor.Manufacturer) && Objects.equals(SerialNumber, monitor.SerialNumber);
-    }
 
     @Override
     public int hashCode() {

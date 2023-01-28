@@ -37,13 +37,7 @@ public class User1 {
         query.printToLog();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User1 user1)) return false;
-        if (!Objects.equals(login, user1.login)) return false;
-        return Objects.equals(password, user1.password);
-    }
+
 
     @Override
     public int hashCode() {
