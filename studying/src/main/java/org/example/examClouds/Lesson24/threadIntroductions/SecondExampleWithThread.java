@@ -15,9 +15,6 @@ public class SecondExampleWithThread {
         thread.start();
         System.out.println("Hello from main thread");
     }
-
-
-
 }
 
 class Runner implements Runnable{
