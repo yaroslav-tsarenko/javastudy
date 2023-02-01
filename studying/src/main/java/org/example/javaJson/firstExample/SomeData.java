@@ -1,4 +1,4 @@
-package org.example.javaJson;
+package org.example.javaJson.firstExample;
 
 public class SomeData {
   private InnerObject innerObject;
