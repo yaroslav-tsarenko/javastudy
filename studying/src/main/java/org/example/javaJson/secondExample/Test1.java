@@ -63,5 +63,5 @@ class Person {
     public void setGeoHistory(List<String> geoHistory) {
         this.geoHistory = geoHistory;
     }
-    
+
 }
