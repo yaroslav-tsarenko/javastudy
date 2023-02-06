@@ -2,6 +2,7 @@ package org.example.httpProtocol;
 
 import com.sun.net.httpserver.HttpServer;
 import org.example.httpProtocol.handler.SimpleHandler;
+import org.example.httpProtocol.repository.UserRepository;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -14,7 +15,8 @@ public class HttpServerDemo {
 
     public static void main(String[] args) throws IOException{
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), BACKLOG);
-        server.createContext("/", new SimpleHandler());
+        UserRepository userRepository = new UserRepository();
+        server.createContext("/", new SimpleHandler(userRepository));
         server.setExecutor(Executors.newSingleThreadExecutor());
         server.start();
         System.out.println("HTTP server started and listening port: " + PORT);
