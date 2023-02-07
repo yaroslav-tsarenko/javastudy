@@ -43,7 +43,7 @@ public class HttpServer {
                     output.flush();
 
                     // по окончанию выполнения блока try-with-resources потоки,
-                    // а вместе с ними и соединение будут закрыты
+                    // а вместе с ними и соединение будут закрыты!
                     System.out.println("Client disconnected!");
                 }
             }
