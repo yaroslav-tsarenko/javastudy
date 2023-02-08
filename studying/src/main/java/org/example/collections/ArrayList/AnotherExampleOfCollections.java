@@ -7,7 +7,7 @@ public class AnotherExampleOfCollections {
         ArrayList<String> people = new ArrayList<>();
         people.add("John");
         people.add("Dave");
-        people.add("Jane");
+        people.add("Jack");
 
         people.remove("Dave");
         people.remove(1);
