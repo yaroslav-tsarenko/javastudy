@@ -31,6 +31,18 @@ public class UserRepository {
         }
     }
 
+    public User delete(User user){
+        Optional<User> checkedUser = users.stream()
+                .filter(currentUser -> currentUser.getId().equals(user.getId())).findFirst();
+        if (checkedUser.isPresent()) {
+            users.remove(checkedUser.get());
+            users.add(user);
+            return user;
+        } else {
+            return null;
+        }
+    }
+
     private long generateId() {
         long id = 1;
         Optional<User> max = users.stream().max(Comparator.comparing(User::getId));
