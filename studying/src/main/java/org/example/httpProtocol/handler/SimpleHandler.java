@@ -42,7 +42,27 @@ public class SimpleHandler implements HttpHandler {
             case "PUT":
                 handlePut(exchange);
                 break;
+            case "DELETE":
+                handleDelete(exchange);
+                break;
         }
+    }
+
+    private void handleDelete(HttpExchange exchange) throws IOException {
+        OutputStream responseBody = exchange.getResponseBody();
+
+        int OK_STATUS = 200;
+
+        if (exchange.getRequestURI().toString().equals("/users")) {
+            byte[] bytes = exchange.getRequestBody().readAllBytes();
+            User user = createGson().fromJson(new String(bytes), User.class);
+            User deletedUser = userRepository.delete(user);
+            byte[] message = createMessage(deletedUser);
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
+        responseBody.flush();
+        responseBody.close();
     }
 
     private void handlePost(HttpExchange exchange) throws IOException {
