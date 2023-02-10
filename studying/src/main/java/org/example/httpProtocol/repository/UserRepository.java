@@ -31,15 +31,11 @@ public class UserRepository {
         }
     }
 
-    public User delete(User user){
+    public void delete(Long id) {
         Optional<User> checkedUser = users.stream()
-                .filter(currentUser -> currentUser.getId().equals(user.getId())).findFirst();
+                .filter(currentUser -> currentUser.getId().equals(id)).findFirst();
         if (checkedUser.isPresent()) {
             users.remove(checkedUser.get());
-            users.add(user);
-            return user;
-        } else {
-            return null;
         }
     }
 
