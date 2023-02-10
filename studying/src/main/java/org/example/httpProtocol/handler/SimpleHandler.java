@@ -4,65 +4,87 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.example.httpProtocol.model.Contact;
 import org.example.httpProtocol.model.User;
+import org.example.httpProtocol.repository.UserContactRepository;
 import org.example.httpProtocol.repository.UserRepository;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.Optional;
 
 public class SimpleHandler implements HttpHandler {
 
     private final UserRepository userRepository;
+    private final UserContactRepository userContactRepository;
+    private final Logger log;
 
-    public SimpleHandler(UserRepository userRepository) {
+    public SimpleHandler(UserRepository userRepository, UserContactRepository userContactRepository, Logger log) {
         this.userRepository = userRepository;
+        this.userContactRepository = userContactRepository;
+        this.log = log;
     }
 
-    /**
-     * Handle the given request and generate an appropriate response.
-     * See {@link HttpExchange} for a description of the steps
-     * involved in handling an exchange.
-     *
-     * @param exchange the exchange containing the request from the
-     *                 client and used to send the response
-     * @throws NullPointerException if exchange is <code>null</code>
-     */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        switch (exchange.getRequestMethod()) {
-            case "GET":
-                handleGet(exchange);
-                break;
-            case "POST":
-                handlePost(exchange);
-                break;
-            case "PUT":
-                handlePut(exchange);
-                break;
-            case "DELETE":
-                handleDelete(exchange);
-                break;
+        try {
+            switch (exchange.getRequestMethod()) {
+                case "GET":
+                    handleGet(exchange);
+                    break;
+                case "POST":
+                    handlePost(exchange);
+                    break;
+                case "PUT":
+                    handlePut(exchange);
+                    break;
+                case "DELETE":
+                    handleDelete(exchange);
+                    break;
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            String errorMessage = e.getMessage();
+            byte[] message = errorMessage.getBytes(StandardCharsets.UTF_8);
+            int statusCode = HttpURLConnection.HTTP_INTERNAL_ERROR;
+            if (e instanceof NotFoundException) {
+                statusCode = 404;
+            }
+            OutputStream responseBody = exchange.getResponseBody();
+            exchange.sendResponseHeaders(statusCode, message.length);
+            responseBody.write(message);
+            responseBody.flush();
+            responseBody.close();
         }
     }
 
     private void handleDelete(HttpExchange exchange) throws IOException {
         OutputStream responseBody = exchange.getResponseBody();
-
         int OK_STATUS = 200;
-
-        if (exchange.getRequestURI().toString().equals("/users")) {
-            byte[] bytes = exchange.getRequestBody().readAllBytes();
-            User user = createGson().fromJson(new String(bytes), User.class);
-            User deletedUser = userRepository.delete(user);
-            byte[] message = createMessage(deletedUser);
+        String uri = exchange.getRequestURI().toString();
+        System.out.println("URI: " + uri);
+        if (uri.startsWith("/users")) {
+            long id = resolveIdFromUri(uri);
+            log.info("started user deletion, id:" + id);
+            userRepository.delete(id);
+            byte[] message = new byte[0];
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
+        if (uri.startsWith("/contacts")) {
+            long id = resolveIdFromUri(uri);
+            userContactRepository.delete(id);
+            byte[] message = new byte[0];
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
         }
         responseBody.flush();
         responseBody.close();
+    }
+
+    private static long resolveIdFromUri(String uri) {
+        return Long.parseLong(uri.split("/")[2]);
     }
 
     private void handlePost(HttpExchange exchange) throws IOException {
@@ -78,11 +100,19 @@ public class SimpleHandler implements HttpHandler {
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
         }
+        if (exchange.getRequestURI().toString().equals("/contacts")) {
+            byte[] bytes = exchange.getRequestBody().readAllBytes();
+            Contact contact = createGson().fromJson(new String(bytes), Contact.class);
+            Contact savedContact = userContactRepository.save(contact);
+            byte[] message = createMessage(savedContact);
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
         responseBody.flush();
         responseBody.close();
     }
 
-    private void handleGet(HttpExchange exchange) throws IOException {
+    private void handleGet(HttpExchange exchange) throws IOException, NotFoundException {
         OutputStream responseBody = exchange.getResponseBody();
         String ok = "OK";
         String testEndpoint = "TEST";
@@ -92,17 +122,19 @@ public class SimpleHandler implements HttpHandler {
         if (exchange.getRequestURI().toString().equals("/status")) {
             exchange.sendResponseHeaders(OK_STATUS, ok.getBytes().length);
             responseBody.write(ok.getBytes(StandardCharsets.UTF_8));
-        }
-
-        if (exchange.getRequestURI().toString().equals("/test")) {
+        } else if (exchange.getRequestURI().toString().equals("/test")) {
             exchange.sendResponseHeaders(OK_STATUS, testEndpoint.getBytes().length);
             responseBody.write(testEndpoint.getBytes(StandardCharsets.UTF_8));
-        }
-
-        if (exchange.getRequestURI().toString().equals("/users")) {
+        } else if (exchange.getRequestURI().toString().equals("/users")) {
             byte[] message = createMessage(userRepository.findAll());
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
+        } else if (exchange.getRequestURI().toString().equals("/contacts")) {
+            byte[] message = createMessage(userContactRepository.findAll());
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        } else {
+            throw new NotFoundException("requested resource not found");
         }
         responseBody.flush();
         responseBody.close();
@@ -117,6 +149,14 @@ public class SimpleHandler implements HttpHandler {
             byte[] bytes = exchange.getRequestBody().readAllBytes();
             User user = createGson().fromJson(new String(bytes), User.class);
             User updated = userRepository.update(user);
+            byte[] message = createMessage(updated);
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
+        if (exchange.getRequestURI().toString().equals("/contacts")) {
+            byte[] bytes = exchange.getRequestBody().readAllBytes();
+            Contact contact = createGson().fromJson(new String(bytes), Contact.class);
+            Contact updated = userContactRepository.update(contact);
             byte[] message = createMessage(updated);
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
