@@ -1,5 +1,6 @@
 package org.example.leetCode;
 
+import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class TwoSum {
@@ -13,17 +14,19 @@ public class TwoSum {
 
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) ((Math.random() * 100) + 1);
-            System.out.println(array[i]);
         }
 
-        twoSum(array, target);
-
+        TwoSum twoSum = new TwoSum();
+        System.out.println(twoSum.twoSum(array, target));
     }
 
-    public static int[] twoSum(int[] numbers, int target){
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
-            int sum = numbers[i] + numbers[i + 1];
-            System.out.println(sum);
+            if (map.containsKey(target - numbers[i]) && i != map.get(target - numbers[i])) {
+                return new int[]{i, map.get(target - numbers[i])};
+            }
+            map.put(numbers[i], i);
         }
         return null;
     }
