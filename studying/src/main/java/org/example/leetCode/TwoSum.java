@@ -45,8 +45,8 @@ public class TwoSum {
     }
 
     public int[] twoSumThird(int[] numbers, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
 
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
             map.put(numbers[i], i);
         }
@@ -58,6 +58,5 @@ public class TwoSum {
             }
         }
         throw new IllegalArgumentException("No solution for defined input data!");
-
     }
 }
