@@ -22,7 +22,7 @@ public class ArrayStreak {
                 capacity = 0;
             }
         }
-        System.out.println("Streak: " + streak);
+        System.out.println("Streakkk: " + streak);
         return null;
         //
     }
