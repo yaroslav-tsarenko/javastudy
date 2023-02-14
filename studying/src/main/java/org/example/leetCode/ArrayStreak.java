@@ -12,18 +12,17 @@ public class ArrayStreak {
         arrayStreak(array);
     }
 
-    public static int[] arrayStreak(int[] array) {
+    public static void arrayStreak(int[] array) {
         int streak = 0, capacity = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == 1) {
+        for (int j : array) {
+            if (j == 1) {
                 capacity++;
                 streak = Math.max(streak, capacity);
             } else {
                 capacity = 0;
             }
         }
-        System.out.println("Streakkk: " + streak);
-        return null;
+        System.out.println("Streakk: " + streak);
         //
     }
 }
