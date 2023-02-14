@@ -24,5 +24,6 @@ public class ArrayStreak {
         }
         System.out.println("Streak: " + streak);
         return null;
+        //
     }
 }
