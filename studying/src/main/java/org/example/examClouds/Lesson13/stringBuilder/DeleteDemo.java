@@ -15,5 +15,6 @@ public class DeleteDemo {
 
         sb.deleteCharAt(0);
         System.out.println("После deleteCharAt: " + sb);
+        //
     }
 }
