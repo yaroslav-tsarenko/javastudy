@@ -10,7 +10,7 @@ public class DuplicateZerosThirdExample {
     }
 
     private static void duplicateZeros(int[] arr) {
-        int result[] = new int[arr.length];
+        int[] result = new int[arr.length];
         for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] == 0) {
                 // duplicate it!
