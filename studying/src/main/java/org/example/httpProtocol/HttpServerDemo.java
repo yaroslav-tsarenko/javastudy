@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpServer;
 import org.example.httpProtocol.handler.Logger;
 import org.example.httpProtocol.handler.SimpleHandler;
 import org.example.httpProtocol.repository.UserContactRepository;
+import org.example.httpProtocol.repository.UserProductRepository;
 import org.example.httpProtocol.repository.UserRepository;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ public class HttpServerDemo {
         Logger log = new Logger();
         UserRepository userRepository = new UserRepository();
         UserContactRepository userContactRepository = new UserContactRepository();
-        server.createContext("/", new SimpleHandler(userRepository, userContactRepository, log));
+        UserProductRepository userProductRepository = new UserProductRepository();
+        server.createContext("/", new SimpleHandler(userRepository, userContactRepository, userProductRepository, log));
         server.setExecutor(Executors.newSingleThreadExecutor());
         server.start();
         System.out.println("HTTP server started and listening port: " + PORT);
