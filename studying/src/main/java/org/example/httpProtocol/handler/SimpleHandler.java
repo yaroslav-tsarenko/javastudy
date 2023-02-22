@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.httpProtocol.model.Contact;
+import org.example.httpProtocol.model.Product;
 import org.example.httpProtocol.model.User;
 import org.example.httpProtocol.repository.UserContactRepository;
+import org.example.httpProtocol.repository.UserProductRepository;
 import org.example.httpProtocol.repository.UserRepository;
 
 import java.io.IOException;
@@ -18,11 +20,13 @@ public class SimpleHandler implements HttpHandler {
 
     private final UserRepository userRepository;
     private final UserContactRepository userContactRepository;
+    private final UserProductRepository userProductRepository;
     private final Logger log;
 
-    public SimpleHandler(UserRepository userRepository, UserContactRepository userContactRepository, Logger log) {
+    public SimpleHandler(UserRepository userRepository, UserContactRepository userContactRepository, UserProductRepository userProductRepository, Logger log) {
         this.userRepository = userRepository;
         this.userContactRepository = userContactRepository;
+        this.userProductRepository = userProductRepository;
         this.log = log;
     }
 
@@ -74,11 +78,21 @@ public class SimpleHandler implements HttpHandler {
         }
         if (uri.startsWith("/contacts")) {
             long id = resolveIdFromUri(uri);
+            log.info("started contact deletion, id:" + id);
             userContactRepository.delete(id);
             byte[] message = new byte[0];
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
         }
+        if (uri.startsWith("/products")) {
+            long id = resolveIdFromUri(uri);
+            log.info("started product deletion, id:" + id);
+            userProductRepository.delete(id);
+            byte[] message = new byte[0];
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
+
         responseBody.flush();
         responseBody.close();
     }
@@ -108,6 +122,14 @@ public class SimpleHandler implements HttpHandler {
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
         }
+        if (exchange.getRequestURI().toString().equals("/products")) {
+            byte[] bytes = exchange.getRequestBody().readAllBytes();
+            Product product = createGson().fromJson(new String(bytes), Product.class);
+            Product savedProduct = userProductRepository.save(product);
+            byte[] message = createMessage(savedProduct);
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
         responseBody.flush();
         responseBody.close();
     }
@@ -133,6 +155,12 @@ public class SimpleHandler implements HttpHandler {
             byte[] message = createMessage(userContactRepository.findAll());
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
+        }
+        else if (exchange.getRequestURI().toString().equals("/products")) {
+            byte[] message = createMessage(userProductRepository.findAll());
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+
         } else {
             throw new NotFoundException("requested resource not found");
         }
@@ -157,6 +185,14 @@ public class SimpleHandler implements HttpHandler {
             byte[] bytes = exchange.getRequestBody().readAllBytes();
             Contact contact = createGson().fromJson(new String(bytes), Contact.class);
             Contact updated = userContactRepository.update(contact);
+            byte[] message = createMessage(updated);
+            exchange.sendResponseHeaders(OK_STATUS, message.length);
+            responseBody.write(message);
+        }
+        if (exchange.getRequestURI().toString().equals("/products")) {
+            byte[] bytes = exchange.getRequestBody().readAllBytes();
+            Product product = createGson().fromJson(new String(bytes), Product.class);
+            Product updated = userProductRepository.update(product);
             byte[] message = createMessage(updated);
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
