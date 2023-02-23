@@ -4,6 +4,7 @@ public class DeletingFromTheStart {
     public static void main(String[] args) {
 
         int[] int_array = new int[10];
+
         int length = 0;
 
         // Starting at index 1, we shift each element one position
