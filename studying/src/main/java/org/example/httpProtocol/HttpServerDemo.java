@@ -1,6 +1,7 @@
 package org.example.httpProtocol;
 
 import com.sun.net.httpserver.HttpServer;
+import org.example.httpProtocol.datasource.Datasource;
 import org.example.httpProtocol.handler.Logger;
 import org.example.httpProtocol.handler.SimpleHandler;
 import org.example.httpProtocol.repository.UserContactRepository;
@@ -19,7 +20,8 @@ public class HttpServerDemo {
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), BACKLOG);
         Logger log = new Logger();
-        UserRepository userRepository = new UserRepository();
+        Datasource datasource = new Datasource();
+        UserRepository userRepository = new UserRepository(datasource);
         UserContactRepository userContactRepository = new UserContactRepository();
         UserProductRepository userProductRepository = new UserProductRepository();
         server.createContext("/", new SimpleHandler(userRepository, userContactRepository, userProductRepository, log));
