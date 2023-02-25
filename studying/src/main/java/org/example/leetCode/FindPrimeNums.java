@@ -8,7 +8,7 @@ public class FindPrimeNums {
     }
     public static void findPrimeNums(int[] array, int divisionNum){
         out_for:
-        for (int i = divisionNum; i < array.length; i++) {
+        for (int i = 3; i < array.length; i++) {
             for (int j = divisionNum; j < i; j++) {
                 if (i % j == 0){
                 continue out_for;
