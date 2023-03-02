@@ -25,17 +25,13 @@ public class UserProductRepository {
     }
 
     public Product update(Product product) {
-
         datasource.execute("UPDATE app_product SET name = '" + product.getName() + "', " + "seller = '" + product.getSeller()
                 + "', " + "' WHERE id = " + product.getId() + ";");
-
         return product;
     }
 
     public void delete(Long id) {
-
         datasource.execute("DELETE FROM app_product WHERE id = " + id + ";");
-
     }
 
 
