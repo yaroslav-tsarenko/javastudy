@@ -135,27 +135,32 @@ public class SimpleHandler implements HttpHandler {
     }
 
     private void handleGet(HttpExchange exchange) throws IOException, NotFoundException {
+
         OutputStream responseBody = exchange.getResponseBody();
         String ok = "OK";
         String testEndpoint = "TEST";
 
-
         int OK_STATUS = 200;
+
         if (exchange.getRequestURI().toString().equals("/status")) {
             exchange.sendResponseHeaders(OK_STATUS, ok.getBytes().length);
             responseBody.write(ok.getBytes(StandardCharsets.UTF_8));
+
         } else if (exchange.getRequestURI().toString().equals("/test")) {
             exchange.sendResponseHeaders(OK_STATUS, testEndpoint.getBytes().length);
             responseBody.write(testEndpoint.getBytes(StandardCharsets.UTF_8));
+
         } else if (exchange.getRequestURI().toString().equals("/users")) {
             byte[] message = createMessage(userRepository.findAll());
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
+
         } else if (exchange.getRequestURI().toString().equals("/contacts")) {
             byte[] message = createMessage(userContactRepository.findAll());
             exchange.sendResponseHeaders(OK_STATUS, message.length);
             responseBody.write(message);
         }
+
         else if (exchange.getRequestURI().toString().equals("/products")) {
             byte[] message = createMessage(userProductRepository.findAll());
             exchange.sendResponseHeaders(OK_STATUS, message.length);
@@ -164,8 +169,10 @@ public class SimpleHandler implements HttpHandler {
         } else {
             throw new NotFoundException("requested resource not found");
         }
+
         responseBody.flush();
         responseBody.close();
+
     }
 
     private void handlePut(HttpExchange exchange) throws IOException {
