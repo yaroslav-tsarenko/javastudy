@@ -1,7 +1,10 @@
 package org.example.httpProtocol.repository;
 
+import org.example.httpProtocol.datasource.Datasource;
 import org.example.httpProtocol.model.Product;
-
+import org.example.httpProtocol.model.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
@@ -9,44 +12,50 @@ import java.util.Set;
 
 public class UserProductRepository {
     private final Set<Product> products = new HashSet<>();
+    private final Datasource datasource;
+
+    public UserProductRepository(Datasource datasource) {
+        this.datasource = datasource;
+    }
 
     public Product save(Product product) {
-        long id = generateId();
-        product.setId(id);
-        products.add(product);
+        datasource.execute("INSERT INTO app_product (name, seller, id) " +
+                "VALUES ('" + product.getName() + "', '" + product.getSeller() + "', '" + product.getId() + "');");
         return product;
     }
 
     public Product update(Product product) {
-        Optional<Product> checkedProduct = products.stream()
-                .filter(currentContact -> currentContact.getId().equals(product.getId())).findFirst();
-        if (checkedProduct.isPresent()) {
-            products.remove(checkedProduct.get());
-            products.add(product);
-            return product;
-        } else {
-            return save(product);
-        }
+
+        datasource.execute("UPDATE app_product SET name = '" + product.getName() + "', " + "seller = '" + product.getSeller()
+                + "', " + "' WHERE id = " + product.getId() + ";");
+
+        return product;
     }
 
     public void delete(Long id) {
-        Optional<Product> checkedProduct = products.stream()
-                .filter(currentContact -> currentContact.getId().equals(id)).findFirst();
-        if (checkedProduct.isPresent()) {
-            products.remove(checkedProduct.get());
-        }
+
+        datasource.execute("DELETE FROM app_product WHERE id = " + id + ";");
+
     }
 
-    private long generateId() {
-        long id = 1;
-        Optional<Product> max = products.stream().max(Comparator.comparing(Product::getId));
-        if (max.isPresent()) {
-            id = max.get().getId() + 1;
-        }
-        return id;
-    }
 
     public Set<Product> findAll() {
+        Set<Product> products = new HashSet<>();
+        try (ResultSet resultSet = datasource.fetchAll("app_product")) {
+            while (resultSet.next()) {
+                Product product = new Product();
+                Object id = resultSet.getObject("id");
+                Object name = resultSet.getObject("name");
+                Object seller = resultSet.getObject("seller");
+                product.setId((Long) id);
+                product.setName((String) name);
+                product.setSeller((String) seller);
+                products.add(product);
+            }
+            datasource.closeConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return products;
     }
 }

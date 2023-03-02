@@ -22,8 +22,8 @@ public class HttpServerDemo {
         Logger log = new Logger();
         Datasource datasource = new Datasource();
         UserRepository userRepository = new UserRepository(datasource);
-        UserContactRepository userContactRepository = new UserContactRepository();
-        UserProductRepository userProductRepository = new UserProductRepository();
+        UserContactRepository userContactRepository = new UserContactRepository(datasource);
+        UserProductRepository userProductRepository = new UserProductRepository(datasource);
         server.createContext("/", new SimpleHandler(userRepository, userContactRepository, userProductRepository, log));
         server.setExecutor(Executors.newSingleThreadExecutor());
         server.start();

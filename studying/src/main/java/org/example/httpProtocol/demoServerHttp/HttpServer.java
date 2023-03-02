@@ -1,4 +1,4 @@
-package org.example.httpProtocol;
+package org.example.httpProtocol.demoServerHttp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
