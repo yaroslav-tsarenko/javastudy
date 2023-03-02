@@ -3,22 +3,19 @@ package org.example.httpProtocol.model;
 import java.util.Objects;
 
 public class Contact {
-    public Long id;
     public String phoneNumber;
     public String email;
+    public Long id;
 
-    public Contact(Long id, String phoneNumber, String email) {
-        this.id = id;
+
+    public Contact(String phoneNumber, String email, Long id) {
         this.phoneNumber = phoneNumber;
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Contact(){
+
     }
 
     public String getPhoneNumber() {
@@ -37,21 +34,24 @@ public class Contact {
         this.email = email;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Contact contact)) return false;
-
-        if (!Objects.equals(id, contact.id)) return false;
-        if (!Objects.equals(phoneNumber, contact.phoneNumber)) return false;
-        return Objects.equals(email, contact.email);
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(phoneNumber, contact.phoneNumber) && Objects.equals(email, contact.email) && Objects.equals(id, contact.id);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
+        return Objects.hash(phoneNumber, email, id);
     }
 }
