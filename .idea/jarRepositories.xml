@@ -16,5 +16,10 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="proxima" />
+      <option name="name" value="proxima" />
+      <option name="url" value="http://185.237.206.154:8090/v1/libraries/download" />
+    </remote-repository>
   </component>
 </project>

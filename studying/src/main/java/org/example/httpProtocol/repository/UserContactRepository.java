@@ -2,13 +2,10 @@ package org.example.httpProtocol.repository;
 
 import org.example.httpProtocol.datasource.Datasource;
 import org.example.httpProtocol.model.Contact;
-import org.example.httpProtocol.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 public class UserContactRepository {
