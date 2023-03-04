@@ -1,21 +1,64 @@
-package org.example.httpProtocol.model;
+package org.example.httpProtocol.entity;
 
+import com.leadtechsoft.common.jtc.repository.JtcRepository;
+import com.leadtechsoft.common.jtc.repository.annotations.*;
+import com.leadtechsoft.common.jtc.repository.entity.BaseEntity;
+
+import java.util.List;
 import java.util.Objects;
 
-public class User {
+@Table(name = "app_user")
+public class UserEntity extends BaseEntity {
+    @TableField(name = "id")
+    @Id(idGeneration = GenerationType.AUTO)
     private Long id;
+    @TableField(name = "name")
     private String name;
+    @TableField(name = "email")
     private String email;
+    @TableField(name = "phone_number")
     private String phoneNumber;
 
-    public User(Long id, String name, String email, String phoneNumber) {
+    public List<ProductEntity> getUserProducts() {
+        return userProducts;
+    }
+
+    @LinkedCollection(entityType = ProductEntity.class)
+    List<ProductEntity> userProducts;
+
+    public UserEntity(Long id, String name, String email, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
-    public User(){
+    @Override
+    public void addLink(BaseEntity entity) {
+        super.addLink(entity);
+    }
+
+    @Override
+    public void removeLink(BaseEntity entity) {
+        super.removeLink(entity);
+    }
+
+    @Override
+    public boolean isLinksEmpty() {
+        return super.isLinksEmpty();
+    }
+
+    @Override
+    public boolean isLinksEmptyByType(Class<?> type) {
+        return super.isLinksEmptyByType(type);
+    }
+
+    @Override
+    public <E extends BaseEntity, T extends JtcRepository<E>> void initializeLinks(T repository) {
+        super.initializeLinks(repository);
+    }
+
+    public UserEntity() {
 
     }
 
@@ -54,7 +97,7 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User user)) return false;
+        if (!(o instanceof UserEntity user)) return false;
 
         if (!Objects.equals(id, user.id)) return false;
         if (!Objects.equals(name, user.name)) return false;
