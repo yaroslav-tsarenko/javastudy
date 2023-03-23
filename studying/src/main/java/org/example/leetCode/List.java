@@ -1,2 +1,7 @@
-package org.example.leetCode;public class List<T> {
+package org.example.leetCode;
+
+public class List<T> {
+    public void add(int objects) {
+    }
 }
+
