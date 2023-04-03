@@ -5,7 +5,7 @@ public class AddAndSearchStructureDesign {
 
     }
 
-    class WordDictionary {
+    static class WordDictionary {
         private WordDictionary[] children;
         boolean isCompleteWord;
 
