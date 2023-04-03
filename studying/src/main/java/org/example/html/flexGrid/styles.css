@@ -1,0 +1,22 @@
+body {
+    background-color: #464646;
+}
+
+.text {
+    color: #ffffff;
+    columns: 2 200px;                 /* -> split to columns with line*/
+    column-gap: 50px;
+    column-rule: 5px solid #b90000;
+
+
+  /*  color: #fff;
+    padding: 15px;
+    columns: 2;
+    column-gap: 50px;
+    column-rule: 5px dashed #18ff00;
+
+    height: 500px;
+
+    column-fill: balance;*/
+
+}
