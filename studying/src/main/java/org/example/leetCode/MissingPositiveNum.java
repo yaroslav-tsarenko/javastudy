@@ -10,8 +10,8 @@ public class MissingPositiveNum {
     public static void findKthPositive(int[] arr, int k) {
         for(int i : arr){
             if(i <= k){
-                k++;
-            }else {
+                k++;//
+            }else {///
                 break;
             }
         }
