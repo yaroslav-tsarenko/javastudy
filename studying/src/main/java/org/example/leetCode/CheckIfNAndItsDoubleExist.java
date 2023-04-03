@@ -12,7 +12,7 @@ public class CheckIfNAndItsDoubleExist {
     }
 
     public static boolean checkIfExist(int[] array) {
-        boolean t = Boolean.parseBoolean(null);
+        boolean t = false;
         int j = 2;
         for (int i = 0; i < array.length; i++) {
             int element = array[j] * j;
