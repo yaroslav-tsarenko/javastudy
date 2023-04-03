@@ -9,7 +9,7 @@ public class MissingPositiveNum {
         findKthPositive(arrayForEqual, 5);
     }
 
-    public static int findKthPositive(int[] arr, int k) {
+    public static void findKthPositive(int[] arr, int k) {
         for(int i : arr){
             if(i <= k){
                 k++;
@@ -18,7 +18,6 @@ public class MissingPositiveNum {
             }
         }
         System.out.println(k);
-        return k;
     }
 
 
