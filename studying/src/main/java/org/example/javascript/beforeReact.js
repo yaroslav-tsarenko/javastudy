@@ -77,7 +77,7 @@ const {name, position} = macDuk;
 console.log(name, position);
 
 // map, filter
-//
+////
 
 
 
