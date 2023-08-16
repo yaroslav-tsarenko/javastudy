@@ -29,4 +29,4 @@ const fullName = firstName + ' Tsarenko'
 console.log(fullName)
 */
 
-const resultElement = document.getElementById()
+const resultElement = document.getElementById('pretty-button')
