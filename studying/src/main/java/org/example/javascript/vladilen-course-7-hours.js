@@ -30,3 +30,6 @@ console.log(fullName)
 */
 
 const resultElement = document.getElementById('pretty-button')
+const ButtonHello = (props) =>{
+    onclick(resultElement)
+}
