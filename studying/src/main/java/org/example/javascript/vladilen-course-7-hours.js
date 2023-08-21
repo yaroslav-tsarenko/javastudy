@@ -33,3 +33,17 @@ const resultElement = document.getElementById('pretty-button')
 const ButtonHello = (props) =>{
     onclick(resultElement)
 }
+
+function outerFunction() {
+    const outerVariable = 'I am from the outer function';
+
+    function innerFunction() {
+        console.log(outerVariable); // innerFunction has access to outerVariable
+    }
+
+    return innerFunction;
+}
+
+const closureExample = outerFunction();
+closureExample(); // This will log "I am from the outer function"
+
