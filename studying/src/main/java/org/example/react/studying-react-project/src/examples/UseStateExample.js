@@ -1,4 +1,3 @@
-import './App.css';
 import {useState} from "react";
 
 function computeInitialCounter() {
@@ -6,7 +5,7 @@ function computeInitialCounter() {
     return Math.trunc(Math.random() * 20)
 }
 
-function App() {
+function UseStateExample() {
 
     /* const [counter, setCounter] = useState(0);
      const [counter, setCounter] = useState(computeInitialCounter);*/
@@ -51,4 +50,4 @@ function App() {
     );
 }
 
-export default App;
+export default UseStateExample;
