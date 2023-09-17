@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './examples/App';
+import UseStateExample from './examples/UseStateExample';
 import reportWebVitals from './reportWebVitals';
 import UseEffectExample from "./examples/UseEffectExample";
 import UseRefExample from "./examples/UseRefExample";
+import UseMemoExample from "./examples/UseMemoExample";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App/>
+        <UseStateExample/>
         <UseEffectExample/>
         <UseRefExample/>
+        <UseMemoExample/>
     </React.StrictMode>
 );
 
