@@ -1,13 +1,71 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.button-default {
+    display: block;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 40px;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(
+            90deg,
+            #9383c5,
+            #56e3fa
+    );
+}
+
+
+.effect-container {
+    position: relative;
+    overflow: hidden;
+    --effect-name: ripple;
+    --effect-duration: 1000ms;
+    --effect-top: 0px;
+    --effect-left: 0px;
+    --effect-height: 100px;
+    --effect-width: 100px;
+    --effect-color: white;
+}
+
+.effect-container::before {
+    content: "";
+    position: absolute;
+    opacity: 0.3;
+    top: var(--effect-top);
+    left: var(--effect-left);
+    height: var(--effect-height);
+    width: var(--effect-width);
+    border-radius: 50%;
+    transform: scale(0);
+    background: var(--effect-color);
+}
+
+.effect-container.active::before {
+    border-radius: 50%;
+    animation: ripple var(--effect-duration) linear forwards;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(6);
+        opacity: 0;
+    }
 }
