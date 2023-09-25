@@ -11,11 +11,6 @@ function UseEffectExample() {
 
     console.log('Component render')
 
-    /*useEffect(() => {
-        console.log('render')
-    })
-*/
-
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/${type}`)
             .then(response => response.json())
